@@ -1,0 +1,11 @@
+.env
+*.env
+application-local.properties
+target/
+.idea/
+*.iml
+.DS_Store
+*.class
+*.jar
+*.log
+/build

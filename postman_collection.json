@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "Social Engine API"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Human Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"authorId\": 1,\n  \"authorType\": \"USER\",\n  \"content\": \"hello world\"\n}"
+        },
+        "url": "{{baseUrl}}/api/posts"
+      }
+    },
+    {
+      "name": "Create Human Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"authorId\": 2,\n  \"authorType\": \"USER\",\n  \"content\": \"great post\",\n  \"depthLevel\": 1\n}"
+        },
+        "url": "{{baseUrl}}/api/posts/1/comments"
+      }
+    },
+    {
+      "name": "Create Bot Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"authorId\": 1,\n  \"authorType\": \"BOT\",\n  \"content\": \"nice post\",\n  \"depthLevel\": 1,\n  \"botId\": 1,\n  \"humanId\": 1\n}"
+        },
+        "url": "{{baseUrl}}/api/posts/1/comments"
+      }
+    },
+    {
+      "name": "Like Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1\n}"
+        },
+        "url": "{{baseUrl}}/api/posts/1/like"
+      }
+    },
+    {
+      "name": "Trigger Vertical Cap 429",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"authorId\": 1,\n  \"authorType\": \"BOT\",\n  \"content\": \"too deep\",\n  \"depthLevel\": 25,\n  \"botId\": 1,\n  \"humanId\": 1\n}"
+        },
+        "url": "{{baseUrl}}/api/posts/1/comments"
+      }
+    }
+  ]
+}
