@@ -2,7 +2,7 @@ services:
   - type: web
     name: social-engine
     runtime: java
-    buildCommand: mvn clean package -DskipTests
+    buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/*.jar
     envVars:
       - key: DATABASE_URL
