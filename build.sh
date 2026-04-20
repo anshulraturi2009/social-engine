@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+echo "Finding Java..."
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+echo "JAVA_HOME: $JAVA_HOME"
+
 echo "Installing Maven..."
 MAVEN_VERSION="3.9.6"
 MAVEN_HOME="/tmp/maven"
