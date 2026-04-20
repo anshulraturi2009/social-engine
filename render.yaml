@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: social-engine
+    env: java
+    plan: free
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/social-engine-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+      - key: SPRING_JPA_SHOW_SQL
+        value: false
+      - key: SPRING_JPA_HIBERNATE_DIALECT
+        value: org.hibernate.dialect.PostgreSQLDialect
+      - key: SPRING_JPA_OPEN_IN_VIEW
+        value: false
+
+databases:
+  - name: socialengine-db
+    databaseName: socialengine
+    user: socialengine_user
+    plan: free
+
+redis:
+  - name: socialengine-redis
+    plan: free
